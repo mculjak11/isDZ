@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LoginController {
 
-    @Autowired
-    private CarFindUserRepository carFindUserRepo;
-
     LoginService ls = new LoginService();
 
     @PostMapping(path="/api/login", consumes = MediaType.APPLICATION_JSON_VALUE,

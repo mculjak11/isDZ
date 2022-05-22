@@ -11,12 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class FilterController {
 
-    @Autowired
-    private CarFindAdRepository carFindAdRepo;
-
-    @Autowired
-    private CarFindUserRepository carFindUserRepo;
-
     FilterService fs = new FilterService();
 
     @PostMapping(path="/api/ads/filter", produces = "application/json")

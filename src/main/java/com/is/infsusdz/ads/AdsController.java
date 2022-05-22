@@ -14,12 +14,6 @@ import java.util.*;
 @RestController
 public class AdsController {
 
-    @Autowired
-    private CarFindAdRepository carFindAdRepo;
-
-    @Autowired
-    private CarFindUserRepository carFindUserRepo;
-
     AdsService as = new AdsService();
 
     @GetMapping(path="/api/ads/all", produces = "application/json")

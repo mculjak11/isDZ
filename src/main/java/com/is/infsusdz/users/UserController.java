@@ -9,9 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
 
-    @Autowired
-    private CarFindUserRepository carFindUserRepo;
-
     UserService us = new UserService();
 
     @GetMapping(path="/api/users/{username}", produces = "application/json")

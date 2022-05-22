@@ -13,12 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class FavoritesController {
 
-    @Autowired
-    private CarFindUserRepository carFindUserRepo;
-
-    @Autowired
-    private CarFindAdRepository carFindAdRepo;
-
     FavoritesService fs = new FavoritesService();
 
     @PostMapping(path="/api/ads/getFavorites")
