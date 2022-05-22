@@ -11,7 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class FilterController {
 
-    FilterService fs = new FilterService();
+    private final FilterService fs;
+
+    public FilterController(FilterService fs) {
+        this.fs = fs;
+    }
 
     @PostMapping(path="/api/ads/filter", produces = "application/json")
     public ResponseEntity getAdsFilter(@RequestBody FilteredAd filter) {

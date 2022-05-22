@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
 
-    UserService us = new UserService();
+    private final UserService us;
+
+    public UserController(UserService us) {
+        this.us = us;
+    }
 
     @GetMapping(path="/api/users/{username}", produces = "application/json")
     public ResponseEntity getByUsername(@PathVariable String username) {

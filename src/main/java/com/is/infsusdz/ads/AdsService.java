@@ -2,20 +2,23 @@ package com.is.infsusdz.ads;
 
 import com.is.infsusdz.users.CarFindUser;
 import com.is.infsusdz.users.CarFindUserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+@Service
 public class AdsService {
 
-    @Autowired
-    private CarFindAdRepository carFindAdRepo;
 
-    @Autowired
-    private CarFindUserRepository carFindUserRepo;
+    private final CarFindAdRepository carFindAdRepo;
+    private final CarFindUserRepository carFindUserRepo;
+
+    public AdsService(CarFindAdRepository carFindAdRepo, CarFindUserRepository carFindUserRepo) {
+        this.carFindAdRepo = carFindAdRepo;
+        this.carFindUserRepo = carFindUserRepo;
+    }
 
     public ResponseEntity getAll() {
         List<CarFindAd> carAd = carFindAdRepo.findAll();

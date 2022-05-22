@@ -6,17 +6,21 @@ import com.is.infsusdz.users.CarFindUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class FilterService {
 
-    @Autowired
-    private CarFindAdRepository carFindAdRepo;
 
-    @Autowired
-    private CarFindUserRepository carFindUserRepo;
+    private final CarFindAdRepository carFindAdRepo;
+
+    public FilterService(CarFindAdRepository carFindAdRepo) {
+        this.carFindAdRepo = carFindAdRepo;
+    }
 
     public ResponseEntity adsFilter(FilteredAd filter) {
         List<List<String>> listAds = new ArrayList<>();

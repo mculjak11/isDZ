@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class FavoritesController {
 
-    FavoritesService fs = new FavoritesService();
+    private final FavoritesService fs;
+
+    public FavoritesController(FavoritesService fs) {
+        this.fs = fs;
+    }
 
     @PostMapping(path="/api/ads/getFavorites")
     public ResponseEntity getFavoriteAds(@RequestBody FavoriteGet favGet) {

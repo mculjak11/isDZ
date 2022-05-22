@@ -1,6 +1,7 @@
 package com.is.infsusdz.login;
 
 import com.is.infsusdz.users.CarFindUserRepository;
+import com.is.infsusdz.users.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LoginController {
 
-    LoginService ls = new LoginService();
+    private final LoginService ls;
+
+    public LoginController(LoginService ls) {
+        this.ls = ls;
+    }
 
     @PostMapping(path="/api/login", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.TEXT_PLAIN_VALUE)

@@ -1,20 +1,16 @@
 package com.is.infsusdz.ads;
 
-import com.is.infsusdz.ads.CarFindAd;
-import com.is.infsusdz.ads.CarFindAdRepository;
-import com.is.infsusdz.ads.DeleteAd;
-import com.is.infsusdz.users.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.*;
 
 @RestController
 public class AdsController {
 
-    AdsService as = new AdsService();
+    private final AdsService as;
+
+    public AdsController(AdsService as) {
+        this.as = as;
+    }
 
     @GetMapping(path="/api/ads/all", produces = "application/json")
     public ResponseEntity getAllAds() {

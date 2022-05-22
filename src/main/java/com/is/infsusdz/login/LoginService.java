@@ -6,19 +6,22 @@ import com.is.infsusdz.users.CarFindUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Service
 public class LoginService {
 
-    @Autowired
-    private CarFindAdRepository carFindAdRepo;
+    private final CarFindUserRepository carFindUserRepo;
 
-    @Autowired
-    private CarFindUserRepository carFindUserRepo;
+    public LoginService(CarFindUserRepository carFindUserRepo) {
+        this.carFindUserRepo = carFindUserRepo;
+    }
 
     public ResponseEntity verify(LoginData userLogin) {
         CarFindUser usr = carFindUserRepo.findCarFindUserByEmailAndPassword(userLogin.getEmail(),

@@ -7,19 +7,25 @@ import com.is.infsusdz.users.CarFindUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.*;
-
+@Service
 public class FavoritesService {
 
-    @Autowired
-    private CarFindAdRepository carFindAdRepo;
 
-    @Autowired
-    private CarFindUserRepository carFindUserRepo;
+    private final CarFindAdRepository carFindAdRepo;
+
+    private final CarFindUserRepository carFindUserRepo;
+
+    public FavoritesService(CarFindAdRepository carFindAdRepo, CarFindUserRepository carFindUserRepo) {
+        this.carFindAdRepo = carFindAdRepo;
+        this.carFindUserRepo = carFindUserRepo;
+    }
 
     public ResponseEntity getFavorite(FavoriteGet favGet) {
         CarFindUser usr = carFindUserRepo.findCarFindUserByUsername(favGet.getUsername());
